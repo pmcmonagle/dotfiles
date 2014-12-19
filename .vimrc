@@ -94,8 +94,7 @@ set viminfo^=%                  " Remember open buffers on close
 
 try
     "colorscheme koehler        " My favourite built-in colorscheme as a backup 
-    colorscheme charged-256     " Set colorscheme from flazz/vim-colorschemes
-    set background=dark         " Use a dark background 
+    colorscheme d8g_01          " Minimal white+blue. Requires flazz/vim-colorschemes 
 catch
 endtry
 
