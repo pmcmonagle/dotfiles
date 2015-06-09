@@ -28,7 +28,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'   " required
 Plugin 'flazz/vim-colorschemes'
 Plugin 'valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
 Bundle 'joonty/vdebug.git'
+Bundle 'godlygeek/tabular'
 """"" END PLUGINS
 
 call vundle#end()            " required
@@ -38,6 +40,22 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " see :h vundle for more details or wiki for FAQ
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (Syntastic)                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
