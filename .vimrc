@@ -114,6 +114,7 @@ set tm=500                      " Set the timeout length when partial commands a
 set tw=500                      " Wrap text after n characters
 set laststatus=2                " Always show the status line
 set viminfo^=%                  " Remember open buffers on close
+set tags+=tags,.git/tags        " Look for a CTags file at either .git/tags or ./tags
 "set t_vb=                       " Set the visual error bell to an empty character
 
 try
@@ -192,6 +193,10 @@ map <leader>pp :setlocal paste!<cr>
 map <leader>ss :setlocal spell!<cr>
 map <leader>s? z=
 
+" Generate CTags Files
+" requires CreateTags()
+map <leader>ct :call CreateTags()<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto Commands                                         "
@@ -226,3 +231,8 @@ function! HasPaste()
     en
     return ''
 endfunction
+
+function CreateTags()
+    exec ':!ctags -R --fields=+l -f ./.git/tags .'
+endfunction
+ 
