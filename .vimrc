@@ -43,6 +43,12 @@ filetype plugin indent on    " required
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (YouCompleteMe)                     "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_collect_identifiers_from_tags_files = 1
+  
+  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Plugins (Syntastic)                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set statusline+=%#warningmsg#
