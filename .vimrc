@@ -14,7 +14,6 @@
 "   + Functions                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Plugins (Vundle)                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,29 +72,6 @@ if !exists("g:ycm_semantic_triggers")
    let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configure Plugins (YouCompleteMe)                     "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_collect_identifiers_from_tags_files = 1
-  
-  
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configure Plugins (Syntastic)                         "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable Features                                       "
@@ -205,6 +181,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Map for starting typescript-vim
+" use it in the entry-point .ts file
 map <leader>tss :TSSstarthere<cr>
 
 " Useful mappings for managing tabs
@@ -255,6 +232,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Map custom filetypes to known languages
 autocmd BufRead,BufNewFile *.volt set filetype=html
+autocmd BufRead,BufNewFile *.less set filetype=css
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -271,4 +249,4 @@ endfunction
 function CreateTags()
     exec ':!ctags -R --fields=+l -f ./.git/tags .'
 endfunction
- 
+
