@@ -14,10 +14,12 @@
 "   + Functions                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Plugins (Vundle)                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible             " be iMproved, required
+set shell=/bin/bash          " use the right shell (Fish breaks vundle)
 filetype off                 " required
 
 " set the runtime path to include Vundle and initialize
@@ -28,7 +30,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'   " required
 Plugin 'flazz/vim-colorschemes'
 Plugin 'valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
 Bundle 'joonty/vdebug.git'
+Bundle 'godlygeek/tabular'
+Bundle 'clausreinke/typescript-tools.vim'
+Bundle 'leafgarland/typescript-vim'
 """"" END PLUGINS
 
 call vundle#end()            " required
@@ -38,6 +45,34 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " see :h vundle for more details or wiki for FAQ
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (YouCompleteMe)                     "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (Syntastic)                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (typescript-vim)                    "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists("g:ycm_semantic_triggers")
+   let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -146,6 +181,9 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Map for starting typescript-vim
+map <leader>tss :TSSstarthere<cr>
+
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -167,6 +205,10 @@ map 0 ^
 map <leader>pp :setlocal paste!<cr>
 map <leader>ss :setlocal spell!<cr>
 map <leader>s? z=
+
+" Generate CTags Files
+" requires CreateTags()
+map <leader>ct :call CreateTags()<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,4 +243,8 @@ function! HasPaste()
         return 'PASTE MODE '
     en
     return ''
+endfunction
+
+function CreateTags()
+    exec ':!ctags -R --fields=+l -f ./.git/tags .'
 endfunction
