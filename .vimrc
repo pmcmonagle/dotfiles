@@ -108,6 +108,7 @@ set si               " Smart indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Features                                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_liststyle=3         " Default configuration for :Ex
 set history=700                 " How many lines of history vim should remember
 set so=7                        " How many lines before the edge of file before we scroll 
 set cmdheight=2                 " Height of the command bar; give ourselves some space with 2
@@ -238,7 +239,6 @@ autocmd BufRead,BufNewFile *.less set filetype=css
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 function! HasPaste()
     if &paste
         return 'PASTE MODE '
