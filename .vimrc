@@ -76,6 +76,28 @@ let g:ycm_semantic_triggers['typescript'] = ['.']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (YouCompleteMe)                     "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_collect_identifiers_from_tags_files = 1
+  
+  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (Syntastic)                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable Features                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable        " Turn on syntax highlighting. Why wouldn't you want this?
@@ -125,6 +147,7 @@ set tm=500                      " Set the timeout length when partial commands a
 set tw=500                      " Wrap text after n characters
 set laststatus=2                " Always show the status line
 set viminfo^=%                  " Remember open buffers on close
+set tags+=tags,.git/tags        " Look for a CTags file at either .git/tags or ./tags
 "set t_vb=                       " Set the visual error bell to an empty character
 
 try
@@ -248,3 +271,4 @@ endfunction
 function CreateTags()
     exec ':!ctags -R --fields=+l -f ./.git/tags .'
 endfunction
+ 
