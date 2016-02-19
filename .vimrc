@@ -33,7 +33,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Bundle 'joonty/vdebug.git'
 Bundle 'godlygeek/tabular'
-Bundle 'clausreinke/typescript-tools.vim'
 Bundle 'leafgarland/typescript-vim'
 """"" END PLUGINS
 
@@ -157,7 +156,6 @@ endif
 " Requires HasPaste()
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ \ Col:\ %c
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Mappings                                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -180,10 +178,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" Map for starting typescript-vim
-" use it in the entry-point .ts file
-map <leader>tss :TSSstarthere<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
