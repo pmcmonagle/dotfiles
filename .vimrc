@@ -94,14 +94,14 @@ set nobackup         " Turn off backups. Do your backing up in Git!
 set nowb             " Turn off writebackups.
 set noswapfile       " Turn off swapfiles. Vim will clutter your working dir otherwise.
 set expandtab        " Turn TABS into SPACES. (in b4 holy war)
-set smarttab         " Use 'shiftwidth' setting for tabs instead of 'tabstop' 
+set smarttab         " Use 'shiftwidth' setting for tabs instead of 'tabstop'
 set linebreak        " Break long lines at the nearest space instead of the middle of the word
 set wrap             " Wrap lines - 'set tw' determines when to wrap
 set ai               " Auto indent
 set si               " Smart indent
 
 " Disabled "
-"set novisualbell     " Don't show visual feedback on error 
+"set novisualbell     " Don't show visual feedback on error
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -109,17 +109,17 @@ set si               " Smart indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:netrw_liststyle=3         " Default configuration for :Ex
 set history=700                 " How many lines of history vim should remember
-set so=7                        " How many lines before the edge of file before we scroll 
+set so=7                        " How many lines before the edge of file before we scroll
 set cmdheight=2                 " Height of the command bar; give ourselves some space with 2
 set foldcolumn=1                " Add a small margin to the left
 set mat=2                       " Blink the matching bracket cursor every n tenths of a second
 set shiftwidth=4                " Shift 4 characters wide
 set tabstop=4                   " Tab 4 characters wide
 set encoding=utf8               " Default encoding
-set ffs=unix,dos,mac            " Prefer unix line-endings 
+set ffs=unix,dos,mac            " Prefer unix line-endings
 set backspace=eol,start,indent  " Backspace behavior; this apparently mimics most other apps
-set whichwrap=<,>,h,l           " Allow left, right, h, l to move to the next line at end characters 
-set tm=500                      " Set the timeout length when partial commands are given 
+set whichwrap=<,>,h,l           " Allow left, right, h, l to move to the next line at end characters
+set tm=500                      " Set the timeout length when partial commands are given
 set tw=500                      " Wrap text after n characters
 set laststatus=2                " Always show the status line
 set viminfo^=%                  " Remember open buffers on close
@@ -127,14 +127,14 @@ set tags+=tags,.git/tags        " Look for a CTags file at either .git/tags or .
 "set t_vb=                       " Set the visual error bell to an empty character
 
 try
-    "colorscheme koehler        " My favourite built-in colorscheme as a backup 
-    colorscheme d8g_01          " Minimal white+blue. Requires flazz/vim-colorschemes 
+    "colorscheme koehler        " My favourite built-in colorscheme as a backup
+    colorscheme d8g_01          " Minimal white+blue. Requires flazz/vim-colorschemes
 catch
 endtry
 
 try
     set switchbuf=useopen,usetab,newtab
-    set stal=2                  " Always display a tab, even if there's only one open 
+    set stal=2                  " Always display a tab, even if there's only one open
 catch
 endtry
 
@@ -199,6 +199,7 @@ map 0 ^
 " Toggle pastemode and spellcheck
 map <leader>pp :setlocal paste!<cr>
 map <leader>ss :setlocal spell!<cr>
+map <leader>tt mz:execute TabToggle()<CR>'z
 map <leader>s? z=
 
 " Generate CTags Files
@@ -242,5 +243,17 @@ endfunction
 
 function CreateTags()
     exec ':!ctags -R --fields=+l -f ./.git/tags .'
+endfunction
+
+function TabToggle()
+  if &expandtab
+    set shiftwidth=4
+    set softtabstop=0
+    set noexpandtab
+  else
+    set shiftwidth=4
+    set softtabstop=4
+    set expandtab
+  endif
 endfunction
 
