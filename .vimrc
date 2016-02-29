@@ -50,6 +50,11 @@ filetype plugin indent on    " required
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure Plugins (Airline)                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Plugins (Syntastic)                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set statusline+=%#warningmsg#
