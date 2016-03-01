@@ -134,7 +134,8 @@ set tags+=tags,.git/tags        " Look for a CTags file at either .git/tags or .
 
 try
     "colorscheme koehler        " My favourite built-in colorscheme as a backup
-    colorscheme d8g_01          " Minimal white+blue. Requires flazz/vim-colorschemes
+    "colorscheme d8g_01         " Minimal white+blue. Requires flazz/vim-colorschemes
+    colorscheme seapunk         " Custom colorscheme I designed using Vivify
 catch
 endtry
 
