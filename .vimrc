@@ -53,6 +53,7 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 " Configure Plugins (Airline)                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline_section_b = '%{HasTabs()}'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Plugins (Syntastic)                         "
@@ -160,9 +161,10 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-" Set the statusline
+" Set the statusline (Currently ignored due to vim-airline)
 " Requires HasPaste()
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ \ Col:\ %c
+" Requires HasTabs()
+set statusline=\ %{HasTabs()}%{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ \ Col:\ %c
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure Mappings                                    "
@@ -253,6 +255,13 @@ function CreateTags()
     exec ':!ctags -R --fields=+l -f ./.git/tags .'
 endfunction
 
+function HasTabs()
+    if &expandtab
+        return 'SPACES '
+    en
+    return 'TABS '
+endfunction
+
 function TabToggle()
   if &expandtab
     set shiftwidth=4
@@ -265,3 +274,6 @@ function TabToggle()
   endif
 endfunction
 
+" Run TabToggle to start in tab-mode by default.
+" Delete this once we go back to spaces.
+call TabToggle()
