@@ -1,0 +1,8 @@
+# Set some custom paths.
+# Paths in fish are defined as follows:
+# set -gx PATH $PATH <path>
+
+set -gx PATH $PATH /usr/local/games
+set -gx PATH $PATH /usr/games/bin
+set -gx PATH $PATH /usr/games/Sil
+set -gx PATH $PATH /usr/local/Cellar/ncurses/6.0_1/bin
